@@ -7154,7 +7154,7 @@ Object.assign(CLUES,{
   s3tinta:c('A tinta que sente','Os quadros do Casarão Castellani foram pintados com um líquido marrom. Olhar para eles dá vontade de chorar ou de gritar.'),
   s3borra:c('A Borra','"Vaza da pedra, lá embaixo. Quem prova não larga." Quem encosta fica com uma mancha escura que não sai.'),
   s3delirio:c('O Sino Delírio','Um sino gigante quebrado em pedaços, que une Morte e Sangue. Isso não deveria ser possível. Ao lado, uma porta esculpida que não leva a lugar nenhum.'),
-  s3fotoirene:c('A foto da Irene','Você e o Kavyur de mãos dadas por baixo da pasta, no barco. "Ninguém sabe. Eu só fotografo."'),
+  s3fotoirene:c('A foto da Irene','Você e o Kavyur dormindo encostados um no outro em cima da pasta, no barco. "Ninguém viu. Eu só fotografo."'),
   s3alvo:c('A ordem dos alvos','Primeiro o livro perdeu as páginas. Depois o Trono embaixo do Estúdio Imperial. Por último, a casa sob a gráfica: a Base.'),
   s3fotomada:c('A foto do Mada','Você no treino, de manhã, com a mão no nome do Bob. "Eu disse que era pra parede."'),
   s3pegadas:c('Os fundos não estavam limpos','Dezenas de pegadas descalças no pó do palco, vindas da porta que o LC disse estar limpa.'),
@@ -7323,8 +7323,8 @@ O Kavyur tenta escrever um selo de contenção na entrada. As letras escorrem da
 s3_14:{act:KT,title:T('A volta'),
   text:()=>P(T(`No barco, de noite, ninguém dorme. Você só tem forças para ficar com alguém.`)),
   choices:()=>[
-    {label:T('Ficar com o Tulio e a Irene'),run:()=>({text:P(T(`O Tulio mostra a foto do filho vestido de bombeiro. A Irene revela a primeira foto da missão num saquinho de químicos: você e o Kavyur de mãos dadas por baixo da pasta. Ela sorri. "Ninguém sabe. Eu só fotografo." Ela te dá a foto.`))+addClue('s3fotoirene')+bond('tulio')+bond('irene'),go:'s3_15'})},
-    {label:T('Ficar com o Kavyur'),run:()=>({text:P(T(`Você deita a cabeça no ombro dele, no escuro da cabine. "A gente vai ter que contar pro Mada um dia", ele diz. "Ele já sabe", você responde. "Todo mundo já sabe."`))+bond('kavyur')+calm(6),go:'s3_15'})},
+    {label:T('Ficar com o Tulio e a Irene'),run:()=>({text:P(T(`O Tulio mostra a foto do filho vestido de bombeiro. A Irene revela a primeira foto da missão num saquinho de químicos: você e o Kavyur dormindo encostados um no outro, em cima da pasta, de boca aberta. Ela sorri. "Ninguém viu. Eu só fotografo." Ela te dá a foto.`))+addClue('s3fotoirene')+bond('tulio')+bond('irene'),go:'s3_15'})},
+    {label:T('Ficar com o Kavyur'),run:()=>({text:P(T(`Vocês sentam no chão da cabine, costas com costas, do jeito que fazem desde o primeiro relatório juntos. "A gente vai ter que contar tudo pro Mada", ele diz. "Tudo?" "Tudo. Ele aguenta." Você encosta a cabeça na dele, e fica.`))+bond('kavyur')+calm(6),go:'s3_15'})},
     {label:T('Procurar o LC'),test:{sk:'Percepção',dt:20},
       ok:()=>{S.flags.lc3=true;return {text:P(T(`Ele está lavando o braço enfaixado na água do mar, de costas. Por baixo da faixa, você vê uma linha de escrita preta na pele. Some quando ele puxa a faixa de volta. "Ardendo", ele diz. Você não tem certeza do que viu.`)),go:'s3_15'}},
       fail:()=>({text:P(T(`Ele está lavando o braço enfaixado na água do mar. Quando te vê, cobre rápido. "Ardendo", ele diz.`)),go:'s3_15'})}
@@ -8439,11 +8439,11 @@ Faz duas horas que vocês não passam por nenhuma placa. O GPS mostra só verde.
 
 Faz duas horas que vocês não passam por nenhuma placa. O GPS mostra só verde. Mas a estrada continua.`))),
   choices:()=>[
-    {once:'foto',label:V(T('Tirar a foto da Irene do caderno'),T('Pedir para a Maitê mostrar a foto da Irene')),run:()=>({text:P(T(`A foto do barco. Vocês dois de mãos dadas por baixo da pasta. A Irene tirou sem ninguém ver e deu de presente, dias antes de morrer no Trono.
+    {once:'foto',label:V(T('Tirar a foto da Irene do caderno'),T('Pedir para a Maitê mostrar a foto da Irene')),run:()=>({text:P(T(`A foto do barco. Vocês dois dormindo encostados um no outro, em cima da pasta, de boca aberta. A Irene tirou sem ninguém ver e deu de presente, dias antes de morrer no Trono.
 
-"A gente nunca contou pra ninguém", diz a Maitê.
+"A gente tá horrível nessa foto", diz a Maitê.
 
-"Todo mundo sabe", diz o Kavyur. "O Mada sabe. A Juliana sabe. O Frederico sabe, e ele é um papagaio."
+"A gente tá cansado", diz o Kavyur. "É diferente. A Irene sabia a diferença."
 
 Ela ri pela primeira vez desde o hangar. Guarda a foto no bolso de dentro do casaco.`))+bond(V('kavyur','maite'))+calm(4)})},
     {once:'lc',label:T('Falar do LC'),run:()=>({text:P(T(`"Se ele estiver lá...", começa a Maitê.
@@ -8520,7 +8520,7 @@ No meio da noite, você acorda. Tem alguém dormindo na outra cama. Você olha p
 
 Do outro lado, ele acorda também. E olha para você do mesmo jeito.`))+loseSan('1d6',T('o esquecimento')),
   puzzle:{kind:'pick',need:3,title:T('Puzzle · O que é verdade entre vocês'),prompt:T('O sino está apagando vocês um do outro. Escolha as três lembranças que são verdadeiras.'),
-    items:[{id:'lenco',label:T('Ele me deu o lenço dele no casamento do Mada, sem ninguém ver.')},{id:'museu',label:T('A gente se conheceu no subsolo do Museu Nacional.')},{id:'terca',label:T('Ela retoca o batom antes das aulas de terça.')},{id:'hangar',label:T('Ele nunca morou no hangar do VT.')},{id:'foto',label:T('A Irene fotografou a gente de mãos dadas no barco.')},{id:'contou',label:T('Ela nunca contou do museu para ele.')}],
+    items:[{id:'lenco',label:T('Ele me deu o lenço dele no casamento do Mada, quando eu chorei no discurso.')},{id:'museu',label:T('A gente se conheceu no subsolo do Museu Nacional.')},{id:'terca',label:T('Ela retoca o batom antes das aulas de terça.')},{id:'hangar',label:T('Ele nunca morou no hangar do VT.')},{id:'foto',label:T('A Irene fotografou a gente dormindo no barco.')},{id:'contou',label:T('Ela nunca contou do museu para ele.')}],
     check:c=>[...c].sort().join()==='foto,lenco,terca',
     ok:()=>({text:P(T(`O lenço. As terças. A foto. A foto está no bolso do casaco, de verdade, e você tira e mostra, com a mão tremendo.
 
@@ -8530,10 +8530,10 @@ Ele olha a foto. Depois olha para você. E o rosto volta. Inteiro.
 
 "Kavyur", ela diz.
 
-Nenhum dos dois consegue dormir de novo. Vocês juntam as camas e ficam acordados até amanhecer, de mãos dadas, repetindo o nome um do outro de vez em quando, só para ter certeza.`))+addClue('s3c4memorias')+bond(V('kavyur','maite'),2),go:'s3c4_08'}),
+Nenhum dos dois consegue dormir de novo. Vocês sentam no chão, entre as duas camas, e ficam acordados até amanhecer, conversando, repetindo o nome um do outro de vez em quando, só para ter certeza.`))+addClue('s3c4memorias')+bond(V('kavyur','maite'),2),go:'s3c4_08'}),
     fail:()=>({text:P(T(`A lembrança escorrega. O rosto do outro some mais um pouco.`))+_loseSan('1d4',T('o esquecimento'))})},
   choices:()=>[
-    {once:'dica',label:T('Procurar alguma coisa no bolso do casaco'),run:()=>({text:P(T(`Tem uma foto dobrada no bolso. Duas pessoas de mãos dadas num barco. Uma delas é você. Na parte de trás, uma letra que não é sua: "Ninguém sabe. Eu só fotografo. — I."`))})}
+    {once:'dica',label:T('Procurar alguma coisa no bolso do casaco'),run:()=>({text:P(T(`Tem uma foto dobrada no bolso. Duas pessoas dormindo encostadas num barco. Uma delas é você. Na parte de trás, uma letra que não é sua: "Ninguém viu. Eu só fotografo. — I."`))})}
   ]},
 
 s3c4_08:{act:KO,title:T('A moça sem rosto'),
@@ -8660,13 +8660,15 @@ s3c4_17:{act:KO,title:T('Santa Cinza'),
 
 Na entrada, alguém está raspando a placa de ferro de novo. Não para apagar. Para escrever. Santa Cinza, em letra torta, com um prego.`)),
   choices:()=>[
-    {once:'fim',label:V(T('Ficar um pouco com o Kavyur na praça'),T('Ficar um pouco com a Maitê na praça')),run:()=>({text:P(T(`Vocês sentam no banco da praça. Ele pega a mão dela em cima do banco, na frente de todo mundo, sem esconder.
+    {once:'fim',label:V(T('Ficar um pouco com o Kavyur na praça'),T('Ficar um pouco com a Maitê na praça')),run:()=>({text:P(T(`Vocês sentam no banco da praça, um do lado do outro, olhando a cidade que agora tem nome.
 
-"Quando a gente voltar", diz a Maitê, "eu vou contar pro Mada."
+"Quando a gente voltar", diz a Maitê, "eu vou escrever tudo isso. Com os nomes."
 
-"Ele já sabe."
+"Eu faço os selos das margens."
 
-"Eu sei. Mas eu quero contar mesmo assim." Ela encosta a cabeça no ombro dele. "Eu quase esqueci você ontem, Kavyur. Não vou esconder mais nada que eu não queira esquecer."`))+bond(V('kavyur','maite'))+calm(8)})},
+"Você vai errar as datas."
+
+"E você vai corrigir." Ela encosta o ombro no dele. "Eu quase esqueci você ontem, Kavyur. O meu melhor amigo, e eu quase esqueci. Não vou deixar mais nada que importa no rodapé."`))+bond(V('kavyur','maite'))+calm(8)})},
     {label:T('Chamar o hangar pelo rádio'),main:true,run:()=>go('s3c4_18')}
   ]},
 
@@ -9199,7 +9201,7 @@ Object.assign(SCENES,{
 s3c6_00:{act:KO,title:T('Os quatro voltam'),pov:'mada',checkpoint:true,
   text:()=>{const p5=s3price(5);return P(T(`O hangar do VT, no fim da pista de terra. Faz duas semanas que ninguém dorme direito aqui dentro. Hoje, pela primeira vez, todo mundo está.
 
-A Olívia e o Felix chegaram de Maréu com cheiro de sal. O Derick e o Tuninho chegaram de Porto Cinzento com uma caixa de fitas VHS. A Maitê e o Kavyur chegaram de Santa Cinza de mãos dadas, sem esconder de ninguém. E você e a Koranna desceram da caminhonete por último, molhados de uma chuva que já tinha parado.
+A Olívia e o Felix chegaram de Maréu com cheiro de sal. O Derick e o Tuninho chegaram de Porto Cinzento com uma caixa de fitas VHS. A Maitê e o Kavyur chegaram de Santa Cinza discutindo uma data, como sempre. E você e a Koranna desceram da caminhonete por último, molhados de uma chuva que já tinha parado.
 
 A parede dos nomes continua ali, do lado da cruz do VT. Tulio. Irene. Flavio. O Derick passou tinta nova em cima de "Volta inteiro. Sempre."`)+(p5.agent==='mada'&&p5.price==='objeto'?T(`
 
@@ -9883,13 +9885,13 @@ O Kavyur não responde por um tempo. "Então a gente acha as seis", ele diz. "E 
 "Na mão dele."
 
 "Na mão dele."`))+loseSan('1d2',T('a sétima página'))})},
-    {once:'mao',label:V(T('Segurar a mão dele no câmbio'),T('Pôr a mão na dela')),run:()=>({text:P(T(`A mão fica em cima do câmbio a subida inteira, uma em cima da outra. Nas curvas, ele troca de marcha com ela junto, sem soltar.
+    {once:'mao',label:V(T('Dividir o café da garrafa térmica'),T('Oferecer o café da garrafa térmica')),run:()=>({text:P(T(`Vocês dividem a garrafa térmica a subida inteira, um gole cada, sem copo, passando de mão em mão nas retas.
 
-"Contei pro Mada", diz a Maitê.
+"Contei pro Mada que eu quase esqueci você", diz a Maitê.
 
 "Eu vi. Você chorou."
 
-"Ele disse que eu era da família. Mais ainda." Ela olha pela janela. "O VT ia rir da gente."
+"Ele disse que a gente é da família. Mais ainda." Ela olha pela janela. "O VT ia rir da gente."
 
 "O VT ia fazer um bolo", diz o Kavyur. "Com o nome errado."`))+bond(V('kavyur','maite'))+calm(4)})},
     {label:T('Chegar ao mosteiro'),main:true,run:()=>go('s3c8_02')}
@@ -12318,7 +12320,7 @@ Da primeira vez, você só lembrou por causa da foto no bolso do casaco. Dessa v
 
 "Maitê", você diz, baixinho, para ela, que está dormindo.
 
-Você passou anos escrevendo selos e relatórios e textos de casamento, onze versões, sem conseguir dizer em voz alta nada do que importava. Você escreveu que era perigoso, e não disse. Você escreveu cartas no seu caderno para os seus irmãos mortos, e não leu para ninguém. Você amou a Maitê em segredo, e não disse nem para o Mada.
+Você passou anos escrevendo selos e relatórios e textos de casamento, onze versões, sem conseguir dizer em voz alta nada do que importava. Você escreveu que era perigoso, e não disse. Você escreveu cartas no seu caderno para os seus irmãos mortos, e não leu para ninguém. A Maitê é a melhor amiga que você já teve, a única pessoa que lê tudo o que você escreve, e você nunca disse isso para ela.
 
 O Sino do Olvido quase apagou ela de você, e você quase não tinha dito nada.`)),
   choices:()=>[{label:T('Continuar'),main:true,run:()=>go('s3c14_10')}]},
@@ -12330,7 +12332,7 @@ Sentado na beira da beliche, esperando o elevador descer, está você.
 
 Coberto de selos dourados, do pescoço aos pés, escritos pela sua própria mão. Selos que prendem relíquias, que prendem criaturas, que prendem tudo. E um selo fechando a boca, costurado de canto a canto. Os olhos vermelhos, do ritual de ódio da fábrica.
 
-Tudo o que você nunca disse está preso dentro dele. O medo dos Karlovski. O luto do VT. A raiva do Mercer. O amor pela Maitê.
+Tudo o que você nunca disse está preso dentro dele. O medo dos Karlovski. O luto do VT. A raiva do Mercer. O quanto a Maitê importa.
 
 Ele levanta. O elevador não desce. Nunca desce.
 
@@ -12660,11 +12662,11 @@ Você para na frente dele.
 
 O Mada olha para o chão, discreto. A Koranna, não. Ela olha direto, sem disfarçar. O Derick já está sorrindo.
 
-"Eu te amo, Maitê", diz o Kavyur. Alto. A praça inteira ecoa. "Faz tempo. Eu só escrevia."
+"Você é a minha melhor amiga, Maitê", diz o Kavyur. Alto. A praça inteira ecoa. "Faz tempo. Eu só escrevia."
 
 Você passa a mão na boca, onde não tem mais batom desde Santa Cinza, ou onde ainda tem, você nem sabe mais. E responde, alto também, porque agora você escreve no corpo do texto:
 
-"Eu também. Faz tempo."
+"Você também. Faz tempo."
 
 A Koranna bate palma. Uma vez. O Derick grita. O Mada ri, baixo, rápido.
 
@@ -12957,7 +12959,7 @@ Interferência.`))+addClue('s3c16marca')},
 s3c16_12:{act:KO,title:T('O papel'),pov:'tuninho',
   text:()=>P(T(`O galpão se abre como uma cortina. Tenebris. A praça de pedra sem sombra.
 
-Cinco pessoas no meio dela. O Mada. A Koranna. O Derick. O Kavyur e a Maitê, de mãos dadas, sem esconder.
+Cinco pessoas no meio dela. O Mada. A Koranna. O Derick. O Kavyur e a Maitê, lado a lado, dividindo a garrafa térmica.
 
 Você chega tropeçando, com o cabelo branco desgrenhado e o notebook debaixo do braço. Todo mundo levanta.
 
@@ -13284,7 +13286,7 @@ s3c17_12:{act:KO,title:T('Um dia eu te conto'),pov:'olivia',
 
 Você conta antes de chegar. É o que você faz.
 
-O Mada. A Koranna. O Derick, de manga arregaçada. O Kavyur e a Maitê, de mãos dadas. O Tuninho, de cabelo branco, do lado da Koranna.
+O Mada. A Koranna. O Derick, de manga arregaçada. O Kavyur e a Maitê, lado a lado. O Tuninho, de cabelo branco, do lado da Koranna.
 
 Seis. Com você, sete.
 
@@ -13897,7 +13899,7 @@ Ela some. A chama fica.
 
 E aí você percebe que não está sozinho no quarto.
 
-Na porta, em pé, oito pessoas. Um homem de dreads, com uma katana que queima com uma chama transparente. Uma mulher de braço mecânico. Um rapaz de manga arregaçada. Um homem de pistola e uma mulher de casaco branco, de mãos dadas. Um rapaz de cabelo branco. Uma mulher com uma cicatriz no queixo. Um rapaz com um caderno aberto na mão.
+Na porta, em pé, oito pessoas. Um homem de dreads, com uma katana que queima com uma chama transparente. Uma mulher de braço mecânico. Um rapaz de manga arregaçada. Um homem de pistola e, do lado dele, uma mulher de casaco branco. Um rapaz de cabelo branco. Uma mulher com uma cicatriz no queixo. Um rapaz com um caderno aberto na mão.
 
 Eles viram tudo. Tenebris mostrou para eles. Era o pedágio deles, também: ver o seu.
 
@@ -14162,12 +14164,14 @@ Vocês acordam no cafezal dos Valverde, de manhã, com o céu azul de novo. No c
 Lá em cima da colina, na varanda do casarão amarelo, uma senhora muito pequena de xale azul acena. A Dona Celeste. Acordada. De bom humor.
 
 "O café tá passado", ela grita. "E eu dormi a noite inteira!"`)),
-  choices:()=>[{label:T('Um ano depois'),main:true,run:()=>go('s3c20_12')}]},
+  choices:()=>[{label:T('Alguns meses depois'),main:true,run:()=>go('s3c20_12')}]},
 
-s3c20_12:{act:KO,title:T('Um ano depois'),pov:'mada',
+s3c20_12:{act:KO,title:T('Alguns meses depois'),pov:'mada',
   text:()=>{const lc=s3fl(4,'lcVivo'),vico=s3fl(3,'vicoSalvo'),moises=s3fl(5,'moises'),dol=s3fl(8,'dolores'),tiao=s3fl(9,'tiao');
     const presos=[lc==='preso'?'o LC':null,vico===false?null:'o Vico',moises==='minuto'?null:'o Moisés',dol==='livre'?null:'a Irmã Dolores',s3fl(7,'jonas')==='casa'?null:'o Jonas',tiao==='toca'?null:'o Tião'].filter(Boolean);
-    return P(T(`A Base, na velha gráfica em frente ao bar da Juliana, reconstruída tijolo por tijolo, com o túnel que o Flavio cavou. E o hangar do VT, no fim da pista de terra, virou a segunda base da Ordem. O Kavyur dá aula de selos lá, às terças. A Maitê também. Juntos. Sem esconder de ninguém.
+    return P(T(`Seis meses depois.
+
+A Base, na velha gráfica em frente ao bar da Juliana, reconstruída tijolo por tijolo, com o túnel que o Flavio cavou. E o hangar do VT, no fim da pista de terra, virou a segunda base da Ordem.
 
 No subsolo da Base, numa cela nova, toda branca, com três selos, três fechaduras e o Tuninho de guarda, o Kessar dorme numa cama de chama branca, com a lamparina da Ishara acesa do lado. Alguém troca o óleo toda noite. Ninguém combinou quem. Todo mundo troca.
 
@@ -14177,19 +14181,302 @@ Nas outras celas, `)+presos.join(', ')+T(`. O Sílvio pinta a parede de branco t
 
 Na parede de madeira escura do hall, três nomes novos, gravados pelo Kavyur: Tulio. Irene. Flavio.
 
-E embaixo de "Volta inteiro. Sempre.", em letra de caneta, que ninguém pediu para tirar, o Felix escreveu: "Os que ficaram: todos os que estão lendo isso."`))},
-  choices:()=>[
-    {once:'olivia',label:T('A Olívia'),run:()=>({text:P(T(`A Olívia foi até a casa da Sofia, a filha do Renato, num sábado. A Sofia já é adolescente e ainda não consegue ficar parada. A Olívia contou tudo: a peça, a árvore, a hora que ele pediu. A Sofia chorou e riu ao mesmo tempo, igual ao pai.
+E embaixo de "Volta inteiro. Sempre.", em letra de caneta, que ninguém pediu para tirar, o Felix escreveu: "Os que ficaram: todos os que estão lendo isso."
 
-A Olívia recruta menos agora. Conta cabeças do mesmo jeito.`))})},
-    {once:'tuninho',label:T('O Tuninho'),run:()=>({text:P(T(`O Tuninho foi para Xique-Xique nas férias, pela primeira vez em oito anos. O Seu Tonho ficou parado na porta da oficina olhando o cabelo branco do filho por um minuto inteiro. Depois disse: "Toda coisa quebrada tem conserto." E empurrou um rádio velho para ele consertar.`))})},
-    {once:'derick',label:T('O Derick'),run:()=>({text:P(T(`O Derick assina tudo "Derick Hoff" agora, com letra caprichada. Ele usa manga curta. Organiza a Ordem inteira e ainda arruma as gavetas quando fica com medo. Diz que é hábito da mãe.`))})},
-    {once:'felix',label:T('O Felix'),run:()=>({text:P(T(`O Felix começou um caderno só para "Os que ficaram", porque a lista não cabia mais no de capa preta. E outro, novo, onde ele escreve piada ruim de plantão, igual o Seu Zé. Ele aprendeu a tomar chimarrão. Mais ou menos.`))})},
-    {label:T('Voltar para casa'),main:true,run:()=>go('s3c20_13')}
+O paranormal não acabou. Ninguém achou que ia acabar. Mas a vida, pela primeira vez em muito tempo, também não.`))},
+  choices:()=>[{label:T('Um sábado'),main:true,run:()=>go('s3c20_20')}]},
+
+s3c20_20:{act:KO,title:T('Sábado de manhã'),pov:'koranna',
+  text:()=>P(T(`Seis e meia. Quem acorda a casa é o Frederico.
+
+"Oi amor! Oi amor! Oi amor!"
+
+Você abre um olho. O lado do Adam na cama está vazio e ainda quente. Da cozinha vem cheiro de café e um barulho de unhas derrapando no piso.
+
+Você desce de meia. O Adam está no fogão, de bermuda e camiseta velha, fritando ovo. A Myla está pendurada no calcanhar dele, pedindo. A Isha está sentada do lado da porta, com a coleira na boca, esperando. O Dodoro está em cima da geladeira, julgando todo mundo.
+
+"Bom dia, esposa", ele diz, sem virar.
+
+Ainda é engraçado ouvir isso. Você acha que vai ser engraçado para sempre.`)),
+  choices:()=>[
+    {once:'ep_bichos',label:T('Dar comida para os bichos'),run:()=>({text:P(T(`A ração da Isha na tigela grande. A da Myla em outra tigela, longe, porque a Myla come a dos outros primeiro e a dela depois. O sachê do Dodoro, que ele só come se você ficar olhando. Semente para o Frederico, que joga metade no chão e grita "Tchau!".
+
+"Você é a favorita deles", diz o Adam.
+
+"Eu sou a que dá comida."
+
+"É a mesma coisa."`))+calm(3)})},
+    {once:'ep_isha',label:T('Levar a Isha para passear'),run:()=>({text:P(T(`O Adam vai junto, com a caneca de café na mão. A rua ainda está vazia. A Isha acha um galho maior do que ela e se recusa a voltar para casa sem ele.
+
+O Adam carrega o galho até em casa. No ombro, como carregava a Raijin.
+
+"Ela escolheu", ele diz. "A gente carrega."
+
+A vizinha da frente, regando as plantas, dá bom dia para os dois. Ela não sabe de nada. Ela não sabe que o homem de galho no ombro segurou a Morte com a mão. E é exatamente por isso que o dia está bom.`))+calm(3)})},
+    {once:'ep_cafe',label:T('Roubar o café dele'),run:()=>({text:P(T(`Você pega a caneca da mão dele e bebe. Ele não reclama. Só serve outra, e fica com a segunda.
+
+"Plantão hoje?", você pergunta.
+
+"Sábado é da Olívia." Ele vira o ovo. "Mas o Derick mandou mensagem às seis."
+
+"Claro que mandou."
+
+Ele mostra o celular. Uma mensagem só: "Nada urgente. Mas vem."`))+bond('mada')})},
+    {label:T('Ir para a Base'),main:true,run:()=>go('s3c20_21')}
+  ]},
+
+s3c20_21:{act:KO,title:T('O chefe'),pov:'mada',
+  text:()=>P(T(`A Base de sábado é mais barulhenta que a de segunda. Recruta novo no estande, alguém discutindo com a máquina de café, o Felix passando com uma caixa de gaze.
+
+O Derick tem uma pasta na mão antes de você passar da porta.
+
+"Méier", ele diz. "Uma senhora de oitenta e dois anos jura que a geladeira dela fala com a voz do marido. Ele morreu em março. Nível baixo. Mas ela ligou onze vezes."
+
+"E por que eu?"
+
+"Porque ela pediu 'o moço grande que salvou o Rio'." O Derick fecha a pasta. "Não sei de onde ela tirou isso. Não fui eu."
+
+A Koranna já está pegando a maleta de perícia.
+
+Uma hora depois, vocês dois estão numa cozinha pequena de azulejo amarelo. Dona Ivone serve café em xícara de visita. A geladeira, de porta bege, zumbe. E, entre um zumbido e outro, uma voz de homem, bem baixinha: "Ivone. Ivone, desliga o gás."`)),
+  choices:()=>[
+    {once:'ep_olhar',label:T('A Koranna examina a geladeira'),run:()=>({text:P(T(`A Koranna afasta a geladeira da parede com a mão de metal, sem esforço, e se abaixa atrás dela com a lanterna.
+
+"Adam."
+
+Atrás da geladeira, riscado na tinta com a ponta de uma chave, um sigilo de Conhecimento. Torto. Feito por alguém que copiou de um livro sem entender.
+
+"O neto", diz Dona Ivone, da porta, sem que ninguém pergunte. "O Caio. Ele ficou mexendo aí depois do enterro. Disse que queria ouvir o avô de novo."
+
+A voz na geladeira não é o marido. É o eco do que o menino lembrava dele. Mas a senhora não precisa saber a diferença hoje.`))})},
+    {cond:()=>S.done['ep_olhar'],label:T('Deixar ela ouvir mais uma vez antes de desfazer'),main:true,run:()=>({text:P(T(`Você senta do lado da Dona Ivone na mesa da cozinha. A Koranna espera, com a mão sobre o sigilo, sem apagar.
+
+A geladeira zumbe. "Ivone. Desliga o gás. E veste o casaco, que tá frio."
+
+A senhora ri, com os olhos cheios. "Ele sempre falava isso. Quarenta e oito anos falando isso."
+
+Você balança a cabeça para a Koranna. Ela desfaz o sigilo com um toque. Uma chama transparente, tão pequena que só vocês dois veem, e a geladeira volta a ser só uma geladeira.
+
+Na saída, a Dona Ivone segura a sua mão. "Obrigada, moço grande."
+
+No carro, a Koranna ri até chorar. "Moço grande que salvou o Rio."
+
+"Não fala nada pro Derick."
+
+"Já mandei mensagem."`))+calm(6),go:'s3c20_22'})}
+  ]},
+
+s3c20_22:{act:KO,title:T('Terça-feira'),pov:'kavyur',
+  text:()=>P(T(`Terça é dia de aula no hangar.
+
+Doze recrutas sentados em caixas de munição vazias, na frente de um quadro-negro que o VT usava para anotar placar de truco. Você desenha um sigilo de Conhecimento no quadro. A Maitê, do seu lado, corrige a sua letra com o giz.
+
+"Ninguém lê isso, Kavyur."
+
+"O sigilo funciona torto."
+
+"O sigilo funciona. Os recrutas não."
+
+Os doze riem. Vocês dois dão essa aula juntos há seis meses, e a turma já sabe que metade da aula é isso. Ela corrige a sua letra, você corrige as datas dela, e no fim os dois estão certos.
+
+Quando o último recruta sai, o sol está baixo sobre a pista de terra. A Maitê vai embora de moto, buzinando duas vezes, como sempre. Você fica. Você sempre fica.`)),
+  choices:()=>[
+    {once:'ep_bolo',label:T('Visitar o VT'),run:()=>({text:P(T(`Atrás do hangar, a cruz de madeira do VT, com um par de chinelos pregado nela. Você leva um pedaço do bolo de chocolate que fez para a turma. Torto. Com "VT" escrito em cima, com glacê, certo.
+
+"O Mada ainda fala do ADAN", você conta. "Todo aniversário."
+
+Você conta da semana. Dos recrutas. Da Maitê corrigindo a sua letra. Do Kessar dormindo com a luz acesa. Você fala em voz alta. Você fala tudo.
+
+O vento passa pela pista de terra e balança os chinelos. Você decide que isso é uma risada.`))+calm(4)})},
+    {once:'ep_musica',label:T('Ligar o rádio do VT'),run:()=>({text:P(T(`O rádio velho do VT, em cima da bancada, ainda pega uma estação só. Você não sabe como. O Tuninho diz que também não sabe, o que é mais preocupante.
+
+Toca "O que é ser herói?". A mesma música que você ouvia aqui com o VT, sentado nessa mesma bancada, anos atrás, com medo de tudo.
+
+Você não canta bem. O VT também não cantava. Você canta mesmo assim, baixo, errando a letra no mesmo lugar que ele errava, sentado na bancada, com a luz laranja entrando pela porta aberta.
+
+Ninguém está vendo. Pela primeira vez, você não se importaria se alguém estivesse.`))+calm(5)})},
+    {label:T('Domingo, na Quinta'),main:true,run:()=>go('s3c20_23')}
+  ]},
+
+s3c20_23:{act:KO,title:T('Quinta da Boa Vista'),pov:'maite',
+  text:()=>P(T(`Domingo. A Quinta da Boa Vista cheia de família, de bicicleta, de pipoca. O Museu Nacional lá no alto, de pé.
+
+Você trouxe a turma de terça para a visita guiada. A sua. O Kavyur veio junto, no fundo do grupo, fazendo pergunta difícil de propósito.
+
+Você passa pelo salão onde você explicava múmias para excursão de escola. Pelo corredor onde você ficava depois do expediente, lendo coisa que não devia. Você não desce ao subsolo. Não precisa mais.`)+(s3price(4).agent==='maite'&&s3price(4).price==='objeto'?T(`
+
+Na boca, um batom vinho novo, da mesma cor do antigo. Você testou três até achar a mesma cor. Guardou os três errados mesmo assim.`):T(`
+
+Na boca, o batom vinho de sempre. Você retocou no banheiro do museu, como fazia antes de cada turma.`))+T(`
+
+"E aqui", você diz, parando no meio do salão principal, com a voz de guia, "fica a peça mais importante do acervo."
+
+O Kavyur olha em volta. "Qual?"
+
+"Nenhuma. Aqui foi onde eu decidi que ia estudar história. Eu tinha nove anos. Excursão de São Gonçalo."`)),
+  choices:()=>[
+    {once:'ep_livro',label:T('Contar do livro'),run:()=>({text:P(T(`"Eu comecei a escrever um livro", você diz, na saída, sentados na grama.
+
+"Sobre o quê?"
+
+"Sobre a Ordem. A história que ninguém vai ler. O VT, o Flavio, o Tulio, a Irene, o Renato. Os nomes da parede. Alguém tem que escrever no corpo do texto, e não no rodapé."
+
+O Kavyur fica quieto um tempo. Depois pergunta: "Posso escrever o capítulo do VT?"
+
+"Eu já deixei em branco pra você."`))+bond('kavyur')})},
+    {label:T('Terminar a visita'),main:true,run:()=>({text:P(T(`No fim, os doze recrutas aplaudem, meio sem jeito. Um deles pergunta se você dá essa visita todo domingo.
+
+"Agora dou", você diz. O museu aceitou uma guia voluntária aos domingos. Ninguém lá sabe que a guia voluntária já segurou um livro que escreve sozinho.
+
+O Kavyur espera na escada, com dois picolés derretendo.
+
+"Historiadora", ele diz, e te entrega um.
+
+"Historiadora", você repete. Em voz alta. Ainda é bom de ouvir.`))+calm(6),go:'s3c20_24'})}
+  ]},
+
+s3c20_24:{act:KO,title:T('Logística'),pov:'derick',
+  text:()=>P(T(`Segunda, sete da manhã. Você é sempre o primeiro na Base.
+
+O quadro grande da sala de operações é seu. Seis sinos, seis guardas, seis turnos. Quatro relíquias, um cofre, três chaves. Missões da semana, em cores: vermelho e roxo para o Mada e a Koranna, verde-água para o Kavyur e a Maitê, rosa para a equipe da Olívia. Tudo com letra caprichada. Tudo assinado "D. Hoff".
+
+Teve uma escala que não funcionou: a do óleo da lamparina do Kessar. Você fez uma tabela, com nomes e dias. Ninguém seguiu. Todo mundo continuou trocando quando passava, sem combinar. Você tirou a tabela da parede. Tem coisa que não precisa ser organizada. Só precisa ser feita.
+
+Você mora sozinho agora. Um quarto e sala em cima do bar da Juliana, com uma estante onde tudo tem lugar e uma foto da sua mãe na altura dos olhos. O Mada ajudou a carregar o sofá e não falou nada o caminho inteiro. Na porta, bagunçou o seu cabelo e foi embora rápido demais.`)),
+  choices:()=>[
+    {once:'ep_recruta',label:T('Ajudar o recruta novo'),run:()=>({text:P(T(`Um recruta de dezenove anos, primeira semana, está na sala do arquivo arrumando uma gaveta que já estava arrumada. As mãos tremem. Ele voltou ontem da primeira missão de campo.
+
+Você reconhece. Você senta do lado dele e começa a arrumar a gaveta de baixo.
+
+"Quando der medo", você diz, "arruma uma gaveta. Depois volta."
+
+"E se não passar?"
+
+"Aí arruma outra. Uma hora passa. E, se não passar, você me chama. Eu arrumo junto."
+
+Ele ri, meio sem querer. As mãos param de tremer na terceira gaveta.`))+calm(4)})},
+    {once:'ep_telefone',label:T('Atender o telefone'),run:()=>({text:P(T(`"Almoço domingo", diz o Mada, do outro lado. "Lá em casa. Todo mundo. Não traz nada."
+
+"Tá."
+
+"Derick. Não traz nada."
+
+"Tá bom, Mada."
+
+Você desliga e anota no canto do quadro, em letra pequena: "Domingo · pudim". Porque não levar nada nunca foi uma opção. A Emily Hoff criou um filho que leva sobremesa.`))})},
+    {label:T('Passar a pasta para o Tuninho'),main:true,run:()=>go('s3c20_25')}
+  ]},
+
+s3c20_25:{act:KO,title:T('Toda coisa quebrada'),pov:'tuninho',
+  text:()=>P(T(`Você foi para Xique-Xique nas férias, pela primeira vez em oito anos.
+
+O Seu Tonho ficou parado na porta da oficina olhando o cabelo branco do filho por um minuto inteiro. Depois disse: "Toda coisa quebrada tem conserto." E empurrou um rádio velho para você consertar. Você consertou em vinte minutos. Ele fingiu que não ficou impressionado. Contou para a rua inteira no dia seguinte.
+
+Agora você está de volta, e é terça de noite, e é o seu turno na cela branca.
+
+De dia você dá aula. Informática para recruta, que é o nome bonito para "como não deixar um Imitante entrar no seu celular". De noite você guarda o subsolo. Você pediu esse turno. Você gosta do silêncio. É um silêncio que você ajudou a fazer.`)+(s3fl(3,'vicoSalvo')===false?'':T(`
+
+Na cela do fim do corredor, o Vico está acordado, lendo. Você trouxe o livro na semana passada: um manual de radioamador de 1987, com as páginas soltas. Ele não agradeceu. Ele devolveu com as páginas coladas.
+
+"Formiguinha", ele diz, sem levantar os olhos. "Boa noite."
+
+"Boa noite, Vico."`))),
+  choices:()=>[
+    {label:T('Trocar o óleo da lamparina'),main:true,run:()=>({text:P(T(`A lamparina de barro da Ishara está com o óleo pela metade. Você completa, devagar, sem deixar a chama tremer.
+
+O Kessar dorme na cama de chama branca, com as correntes douradas finas como fio de ouro. Quatro mil anos de cansaço no rosto, e agora nenhum.
+
+Você senta no chão do lado da cela e conta para ele, baixinho, como consertou o rádio do seu pai. Você não sabe por quê. Você sabe: alguém devia ter contado coisas pequenas para ele, há quatro mil anos. Ninguém contou.
+
+"Toda coisa quebrada tem conserto", você diz. "Quase toda."
+
+A chama da lamparina fica firme.`))+calm(5),go:'s3c20_26'})}
+  ]},
+
+s3c20_26:{act:KO,title:T('A conta'),pov:'olivia',
+  text:()=>P(T(`Você foi até a casa da Sofia, a filha do Renato, num sábado. A Sofia já é adolescente e ainda não consegue ficar parada. Você contou tudo: a peça, a árvore, a hora que ele pediu. A Sofia chorou e riu ao mesmo tempo, igual ao pai.
+
+Ela te deu um desenho que achou numa caixa: o Renato, feito por ela no terceiro ano, com um distintivo enorme no peito e as palavras "MEU PAI VIGIA COISAS". Está na porta do seu armário, na Base.
+
+Você recruta menos agora. Você comanda a equipe de campo, seis agentes, e treina cada um até cansar. Mas não sai procurando nome para encher parede. A parede já tem nome demais.
+
+Você conta cabeças do mesmo jeito. No fim de cada missão, na van, antes de ligar o motor. Um, dois, três, quatro, cinco, seis. Com você, sete.
+
+Faz seis meses que a conta fecha toda vez.
+
+E tem o Felix.
+
+Começou no hangar, depois de Tenebris, sem ninguém anunciar. Ele trazia café no fim do seu turno. Você começou a esperar o café. Um dia ele esqueceu o café e apareceu só com ele mesmo, e você percebeu que era isso que você esperava desde o começo.
+
+O Mada soube primeiro. Não disse nada. Só trocou a escala para vocês dois terem a mesma folga.`)),
+  choices:()=>[
+    {once:'ep_equipe',label:T('Fim de missão'),run:()=>({text:P(T(`Uma casa abandonada em Niterói. Um Companheiro Invisível que brincava com as crianças da rua e não sabia parar. Resolvido antes do almoço. Ninguém ferido.
+
+Na van, você conta. Sete. Um dos recrutas, o mais novo, pergunta por que você conta todo mundo sempre, se todo mundo está ali.
+
+"Porque um dia eu não contei", você diz. E liga o motor.
+
+Na Base, o Felix está esperando na porta do posto médico, com a maleta e um sorriso de quem ficou contando os minutos. Você conta ele também. Oito.`))+bond('felix')})},
+    {label:T('Passar no posto médico'),main:true,run:()=>go('s3c20_27')}
+  ]},
+
+s3c20_27:{act:KO,title:T('Plantão'),pov:'felix',
+  text:()=>P(T(`O posto médico da Base tem três macas, um armário de remédio organizado pelo Derick e um cartaz na porta que diz "SAMU DA ORDEM · NÃO ENTRA COM ARMA NA MÃO". Foi você que fez. Ninguém obedece.
+
+Você trabalha com o Logan e a Iris agora. O Logan é o médico, a Iris é a assistente, e os dois fingem que não namoram há dois anos. Você e a Olívia não fingem nada. Isso deixa o Logan nervoso. Você é o que vai para campo com a maleta, e o que volta primeiro para arrumar a maca.
+
+Tem dois cadernos no seu bolso. Um, "Os que ficaram", com uma lista que não para de crescer, e nenhum nome riscado. O outro, novo, onde você escreve as piadas ruins de plantão. Do jeito do Seu Zé. Algumas são dele. Você deixa o nome dele do lado.
+
+No mês passado você levou a Olívia para Porto Alegre. A sua mãe perguntou três vezes se ela estava comendo direito. A Bia levou vocês no Gasômetro para ver o pôr do sol e tirou quarenta fotos. A Olívia provou chimarrão, disse que era chá amargo de gente teimosa, e tomou a cuia inteira.`)),
+  choices:()=>[
+    {once:'ep_olivia',label:T('A Olívia passa na porta'),run:()=>({text:P(T(`A Olívia para na porta do posto, com a equipe atrás. Ninguém sangrando. Ela entra mesmo assim, senta na maca e estica o braço.
+
+"Não tem nada no seu braço", você diz.
+
+"Mede a pressão mesmo assim."
+
+Você mede. Doze por oito. Ela sabe que está boa. Ela só quer sentar cinco minutos num lugar onde alguém cuida dela, para variar. Você não fala isso. Você anota "12 por 8, ótima" e conta uma piada ruim do Seu Zé.
+
+Ela ri. E, antes de sair, levanta da maca e te dá um beijo rápido, na frente do Logan, que derruba a prancheta.
+
+"Janta hoje?", ela pergunta, já na porta.
+
+"Eu cozinho", você diz.
+
+"Então eu levo pizza. Por garantia."`))+bond('olivia')})},
+    {label:T('Domingo'),main:true,run:()=>go('s3c20_28')}
+  ]},
+
+s3c20_28:{act:KO,title:T('Domingo'),pov:'mada',
+  text:()=>P(T(`Domingo. A casa com quintal, cheia.
+
+A mesa não coube na sala. Vocês levaram para o quintal, embaixo da árvore, e juntaram com a mesa de plástico do vizinho. Oito cadeiras de tipos diferentes, nenhuma igual.
+
+O Kavyur chega com um bolo de chocolate torto. A Maitê chega com um livro de presente para a Koranna e um batom vinho na bolsa, para retocar depois do almoço. O Derick chega com um pudim, e você não diz nada, porque sabia. O Tuninho chega com um rádio velho debaixo do braço e passa a tarde inteira tentando fazer ele pegar a estação do hangar. A Olívia e o Felix chegam juntos, de mãos dadas. Ela conta todo mundo antes de sentar. Ele traz uma cuia de chimarrão, e a Koranna é a única que aceita.
+
+O Frederico grita "Oi amor!" para o Felix, e a Olívia engasga com o guaraná. O Kavyur ri tanto que a Maitê tem que bater nas costas dele. A Myla rouba um pedaço de carne do prato do Tuninho. A Isha deita no pé do Derick e não sai mais. O Dodoro assiste tudo de cima do muro, sem aprovar nada.
+
+Tem uma cadeira sobrando na ponta da mesa. Ninguém pergunta de quem é. Todo mundo sabe que é de muita gente.`)),
+  choices:()=>[
+    {once:'ep_brinde',label:T('O Felix levanta o copo'),run:()=>({text:P(T(`"Um brinde", diz o Felix, de pé, com o copo de guaraná. "Aos que ficaram."
+
+"Aos que ficaram", repetem os oito.
+
+"E aos que não ficaram", diz a Olívia.
+
+Todo mundo levanta o copo de novo. Mais devagar. Você olha para a cadeira sobrando. O vento balança a árvore, e por um segundo parece que alguém sentou.`))+calm(5)})},
+    {once:'ep_foto',label:T('Tirar uma foto de todo mundo'),run:()=>({text:P(T(`O Derick organiza. Claro que é o Derick. Altura, posição, quem fica na frente. A Isha no meio. O Frederico no ombro do Tuninho, que não autorizou.
+
+"Sorri, todo mundo."
+
+O Tuninho põe o celular no timer em cima do muro, do lado do Dodoro, e corre para o lugar. Chega atrasado. A foto sai com ele pela metade, o Kavyur de olho fechado, a Koranna rindo de alguma coisa que você disse, e o Derick sério, porque estava contando os segundos.
+
+É a melhor foto que a Ordem já tirou. O Derick imprime na segunda e põe no hall, do lado da parede dos nomes.`))+calm(5)})},
+    {label:T('De tarde'),main:true,run:()=>go('s3c20_13')}
   ]},
 
 s3c20_13:{act:KO,title:T('Volta inteiro'),pov:'mada',
-  text:()=>P(T(`A casa com quintal. De tarde. A Isha deitada na grama, de barriga para cima. A Myla correndo atrás de uma borboleta que ela nunca vai pegar. O Dodoro dormindo em cima do muro. O Frederico no poleiro da varanda, gritando "Oi amor!" para a Koranna toda vez que ela passa.
+  text:()=>P(T(`De tarde. Todo mundo já foi embora, e a louça ficou para amanhã. A Isha deitada na grama, de barriga para cima. A Myla correndo atrás de uma borboleta que ela nunca vai pegar. O Dodoro dormindo em cima do muro. O Frederico no poleiro da varanda, gritando "Oi amor!" para a Koranna toda vez que ela passa.
 
 Você e a Koranna, sentados no degrau da varanda, com duas xícaras de café.
 
